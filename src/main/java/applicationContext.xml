@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+xsi:schemaLocation="http://www.springframework.org/schema/beans
+https://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- defining bean of type SportsCoach-->
+	<bean id="myCoach" class="com.dependency.injection.xml.constructor_based.example1.SportsCoach" />
+	
+	<!-- **Constructor Injection** Defining bean of type SportsTeam having dependency over myCoach bean -->
+	<bean id="team" class="com.dependency.injection.xml.constructor_based.example1.SportsTeam">
+		<!-- constructor injection for two parameters parameter-->
+		<constructor-arg value="Mumbai Indians"/>
+		<constructor-arg ref="myCoach"/>
+	</bean>
+	
+	<!-- **Setter injection** example 1 for Student class-->
+	<bean id="student" class="com.dependency.injection.xml.setter_based.example1.Student">
+		<!-- setter for studentId field is present in Student class-->
+		<property name="nameOfStudent" value="Sandeep sharma"/>
+		<!-- setter for studentId field is present in Student class-->
+		<property name="studentId" value = "12"/>
+	</bean>
+	
+	<!-- **Setter injection** creating another object of Student class and injecting values with Setter injection -->
+	<bean id="newStudent" class="com.dependency.injection.xml.setter_based.example1.Student">
+		<!-- setter for studentId field is present in Student class-->
+		<property name="nameOfStudent" value="Rahul Singh"/>
+		<!-- setter for studentId field is present in Student class-->
+		<property name="studentId" value = "1"/>
+	</bean>
+	
+	<!-- Example 2 **Constructor Injection** for Student class -->
+	<bean id="sam" class="com.dependency.injection.xml.constructor_based.example2.Student">
+		<constructor-arg name ="studentId" value="11"/>
+		<constructor-arg name="studentName" value="Sam Wing"/>
+	</bean>
+</beans>
